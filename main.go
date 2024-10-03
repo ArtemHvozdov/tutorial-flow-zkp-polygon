@@ -56,7 +56,7 @@ var requestMap = make(map[string]interface{})
 func GetAuthRequest(w http.ResponseWriter, r *http.Request) {
 
 	// Audience is verifier id
-	rURL := "NGROK_URL"
+	rURL := "https://5cbb-91-244-54-213.ngrok-free.app"
 	sessionID := 1
 	CallbackURL := "/api/callback"
 	Audience := "did:polygonid:polygon:amoy:2qQ68JkRcf3xrHPQPWZei3YeVzHPP58wYNxx2mEouR"
@@ -66,8 +66,6 @@ func GetAuthRequest(w http.ResponseWriter, r *http.Request) {
 	// Generate request for basic authentication
 	var request protocol.AuthorizationRequestMessage = auth.CreateAuthorizationRequest("test flow", Audience, uri)
 	
-	request.ID = "7f38a193-0918-4a48-9fac-36adfdb8b542"
-	request.ThreadID = "7f38a193-0918-4a48-9fac-36adfdb8b542"
 	
 	// Add request for a specific proof
 	var mtpProofRequest protocol.ZeroKnowledgeProofRequest
@@ -117,15 +115,17 @@ func Callback(w http.ResponseWriter, r *http.Request) {
         return
     }
 
-    keyApi := os.Getenv("KEY_API_INFURA")
+    //keyApi := os.Getenv("KEY_API_INFURA")
 
     // Add Polygon AMOY RPC node endpoint - needed to read on-chain state
-    ethURL := "https://polygon-amoy.infura.io/v3/" + keyApi
+    ethURL := "https://polygon-amoy.infura.io/v3/a1e81bcaca104bf9ad54f4e88b4c3554"
+
+    fmt.Println(ethURL)
 
     // Add IPFS url - needed to load schemas from IPFS
     //ipfsURL := "ipfs://QmcNPpnDNtPjSCcAJH9UFnBm8oSx2jN27LnoywEmXsuVkZ"
 
-    ipfsURL := "https://ipfs.io"
+    //ipfsURL := "https://ipfs.io"
 
 
     // Add identity state contract address
@@ -154,12 +154,12 @@ func Callback(w http.ResponseWriter, r *http.Request) {
     }
 
     // EXECUTE VERIFICATION
-    verifier, err := auth.NewVerifier(verificationKeyLoader, resolvers, auth.WithIPFSGateway(ipfsURL))
+    verifier, err := auth.NewVerifier(verificationKeyLoader, resolvers, auth.WithIPFSGateway("https://ipfs.io"))
     if err != nil {
         log.Println(err.Error())
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
-    }
+    }    
     authResponse, err := verifier.FullVerify(
         r.Context(),
         string(tokenBytes),
