@@ -5,7 +5,6 @@ go 1.23.0
 require (
 	github.com/ethereum/go-ethereum v1.11.5
 	github.com/iden3/go-circuits/v2 v2.3.0
-	github.com/iden3/go-iden3-auth v1.2.3
 	github.com/iden3/go-iden3-auth/v2 v2.4.1
 	github.com/iden3/iden3comm/v2 v2.5.1
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
@@ -28,8 +27,6 @@ require (
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/holiman/uint256 v1.2.2-0.20230321075855-87b91420868c // indirect
 	github.com/iden3/contracts-abi/state/go/abi v1.0.1 // indirect
-	github.com/iden3/go-circuits v1.0.3 // indirect
-	github.com/iden3/go-iden3-core v1.0.2 // indirect
 	github.com/iden3/go-iden3-core/v2 v2.2.0 // indirect
 	github.com/iden3/go-iden3-crypto v0.0.16 // indirect
 	github.com/iden3/go-jwz/v2 v2.1.1 // indirect
@@ -39,7 +36,6 @@ require (
 	github.com/iden3/go-rapidsnark/verifier v0.0.5 // indirect
 	github.com/iden3/go-rapidsnark/witness/v2 v2.0.0 // indirect
 	github.com/iden3/go-rapidsnark/witness/wazero v0.0.0-20230524142950-0986cf057d4e // indirect
-	github.com/iden3/go-schema-processor v1.3.1 // indirect
 	github.com/iden3/go-schema-processor/v2 v2.4.0 // indirect
 	github.com/ipfs/boxo v0.12.0 // indirect
 	github.com/ipfs/go-cid v0.4.1 // indirect

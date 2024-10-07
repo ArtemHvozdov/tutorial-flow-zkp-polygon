@@ -17,9 +17,7 @@ import (
 	"github.com/iden3/go-iden3-auth/v2/state"
 	"github.com/iden3/iden3comm/v2/protocol"
 
-	//shell "github.com/ipfs/go-ipfs-api"
 	"github.com/skip2/go-qrcode"
-    //"github.com/joho/godotenv"
 )
 
 const VerificationKeyPath = "verification_key.json"
@@ -56,7 +54,7 @@ var requestMap = make(map[string]interface{})
 func GetAuthRequest(w http.ResponseWriter, r *http.Request) {
 
 	// Audience is verifier id
-	rURL := "https://5cbb-91-244-54-213.ngrok-free.app"
+	rURL := "https://b758-91-244-54-213.ngrok-free.app"
 	sessionID := 1
 	CallbackURL := "/api/callback"
 	Audience := "did:polygonid:polygon:amoy:2qQ68JkRcf3xrHPQPWZei3YeVzHPP58wYNxx2mEouR"
@@ -78,7 +76,7 @@ func GetAuthRequest(w http.ResponseWriter, r *http.Request) {
 				"$lt": 20000101,
 			},
 		},
-		"context": "ipfs://QmcNPpnDNtPjSCcAJH9UFnBm8oSx2jN27LnoywEmXsuVkZ",
+		"context": "https://raw.githubusercontent.com/iden3/claim-schema-vocab/main/schemas/json-ld/kyc-v4.jsonld",
 		"type":    "KYCAgeCredential",
 	}
 	request.Body.Scope = append(request.Body.Scope, mtpProofRequest)
@@ -118,15 +116,9 @@ func Callback(w http.ResponseWriter, r *http.Request) {
     //keyApi := os.Getenv("KEY_API_INFURA")
 
     // Add Polygon AMOY RPC node endpoint - needed to read on-chain state
-    ethURL := "https://polygon-amoy.infura.io/v3/a1e81bcaca104bf9ad54f4e88b4c3554"
+    ethURL := "https://polygon-amoy.infura.io/v3/<API_KEY_INFURA>"
 
     fmt.Println(ethURL)
-
-    // Add IPFS url - needed to load schemas from IPFS
-    //ipfsURL := "ipfs://QmcNPpnDNtPjSCcAJH9UFnBm8oSx2jN27LnoywEmXsuVkZ"
-
-    //ipfsURL := "https://ipfs.io"
-
 
     // Add identity state contract address
     contractAddress := "0x1a4cC30f2aA0377b0c3bc9848766D90cb4404124"
